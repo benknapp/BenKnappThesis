@@ -1,0 +1,15 @@
+clear; close all; clc;
+I = imread('litCyst4.png');
+A = imcrop(I);
+G_A = rgb2gray(A);
+G_A_B = imbinarize(G_A, 0.39);
+close all;
+figure();
+imshow(G_A);
+figure();
+imshow(G_A_B);
+[length, width] = size(G_A_B);
+area = length*width;
+W = find(G_A_B == 1);
+numWhite = numel(W);
+density = (numWhite/area);
